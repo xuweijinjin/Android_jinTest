@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <title>许伟进服务器</title>
+</head>
+<body>
+<hr>
+<button onclick="openApp()" style="width:900px; height:200px; font-size:60px; ">调转打开手机app 或下载链接
+</button>
+<hr>
+<h1>服务器正常运行了</h1>
+<p>Ok ，服务器也太简单了--</p>
+<hr>
+
+<h3>你的屏幕:</h3>
+
+
+<script>
+function openApp() {
+	
+	
+    const ua = window.navigator.userAgent.toLowerCase();
+   // 非微信浏览器
+      if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {
+			alert("我是apple！");
+        const loadDateTime = +new Date();
+        window.setTimeout(function() {
+          const timeOutDateTime = +new Date();
+          if ((timeOutDateTime - loadDateTime) < 5000) {
+            window.location.href = 'https://dx185.com/hr/login.html'; // ios下载地址
+          } else {
+            window.close();
+          }
+        }, 2000);
+        window.location.href = ' '; // ios对应的app协议
+      } else if (navigator.userAgent.match(/android/i)) {
+		//alert("我是android！");
+
+        const state = null;
+        try {
+
+ //setTimeout(function(){
+  //window.location.href = 'xl://goods:8888/goodsDetail?goodsId=10011002'; 
+    //  window.location.href = 'com.jinwode.jintest://';//唤起APP
+ // window.location.href = 'com.daxi.application://'; 
+
+   // },2000);
+ // window.location.href = 'com.jinwode.jintest://';
+ //window.location.href = 'com.daxi.application://'; 
+ window.location.href = 'com.xingin.xhs://'; 
+   // window.location.href = 'https://dx185.com/hr/login.html'; //2秒内没有唤起，表示手机中没有该APP，去下载页
+
+
+        } catch (e) {}
+ 
+      }
+    }
+document.write("总宽度/高度: ");
+document.write(window.screen.width + "*" + window.screen.height);
+document.write("<br>");
+document.write("可用宽度/高度: ");
+document.write(screen.availWidth + "*" + screen.availHeight);
+document.write("<br>");
+document.write("色彩深度: ");
+document.write(screen.colorDepth);
+document.write("<br>");
+document.write("色彩分辨率: ");
+document.write(screen.pixelDepth);
+document.write("像素比: ");
+document.write(window.devicePixelRatio);
+
+
+
+</script>
+
+<hr>
+</body>
+</html>
+
+<script>
+document.write("Hello World!");
+document.write("可用宽度: " + screen.availWidth);
+document.write("可用高度: " + screen.availHeight);
+
+
+</script>

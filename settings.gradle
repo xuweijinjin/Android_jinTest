@@ -1,0 +1,6 @@
+include ':JinJavaTEst'
+include ':mylibrary'
+include ':JinUtility'
+include ':app:mylibrary'
+rootProject.name = "jinTest"
+include ':app'

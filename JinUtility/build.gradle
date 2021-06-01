@@ -1,0 +1,72 @@
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    signingConfigs {
+        release {
+            storeFile file('D:\\jin\\AndroidStudioProjects\\jinTest\\jinJKS.jks')
+            storePassword 'jinwode'
+            keyAlias 'key0' //已经改了： key0
+            keyPassword 'jinwode'
+        }
+        debug {
+            storeFile file('D:\\jin\\AndroidStudioProjects\\jinTest\\jinJKS.jks')
+            storePassword 'jinwode'
+            keyAlias 'key0'
+            keyPassword 'jinwode'
+        }
+    }
+
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            signingConfig signingConfigs.debug
+            versionNameSuffix '11'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    android.libraryVariants.all { variant ->
+        variant.outputs.all {
+            def fileName = "com.jin.jinutility.1.1.0.aar"
+            outputFileName = fileName
+        }
+    }
+
+
+}
+
+dependencies {
+
+   // <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+//    <dependency>
+//            <groupId>com.google.code.gson</groupId>
+//      <artifactId>gson</artifactId>
+//            <version>2.8.6</version>
+//   </dependency>
+            implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'com.google.android.material:material:1.1.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}

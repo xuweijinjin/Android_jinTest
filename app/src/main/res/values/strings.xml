@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">jinTest</string>
+    <string name="button">Button</string>
+    <string name="buttonName1">java调用JavaScript</string>
+    <string name="textVal1">我的长度，宽度都是根据</string>
+    <string name="title_activity_main4">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+</resources>

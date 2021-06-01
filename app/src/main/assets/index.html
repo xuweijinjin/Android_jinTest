@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <title>许伟进服务器</title>
+    <meta content="text/html;charset=utf-8" http-equiv="content-type">
+</head>
+<body>
+<hr>
+<!--<input type="text"  id="username" value="Terry" />-->
+<!--<textarea id="jintextarea" rows="3" cols="30" style="height: 50px;width: 70px;resize: none;">-->
+<textarea id="jintextarea" rows="3" cols="30" >
+这里是文本域中的文本 ... ... ... ...
+</textarea>
+
+<button id="btn1" onclick="openApp()" style="width:200px; height:40px; font-size:15px; ">调转打开手机app
+    或链接
+</button>
+
+
+
+<hr>
+<h1>服务器正常运行了</h1>
+
+<hr>
+
+<h3 id="showDemo"></h3>
+<button onclick="forAppCall('jin')">点我</button>
+<button onclick="JinAndroidTest()">测试android方法</button>
+<button onclick="showInP()">看userAgent</button>
+<h3>你的屏幕:</h3>
+
+<p id="demo" width="320" height="300">我的第一个段落</p>
+
+
+
+<hr>
+
+<input type="file" accept="image/*"  onchange = "selectedFile()"/>
+<input type="file" accept="*"  onchange = "selectedFile()"/>
+
+//input标签
+<div id="Page2_caozuoquyu">
+    <input type="file" multiple accept="image/*" id="Page2_caozuoquyu_input" onclick="Click_input()" />
+</div>
+
+
+
+</body>
+
+
+<script>
+
+function Click_input(){
+document.getElementById('Page2_caozuoquyu_input').addEventListener('change',function(e){
+            var files = this.files;
+            var img = new Image();
+            var reader = new FileReader();
+        reader.readAsDataURL(files[0]);
+        reader.onload = function(){
+           //img的定位
+            img.src = this.result;
+            img.setAttribute("id","Page2_caozuoquyu_tupian1");
+            img.style.width = "50%";
+            img.style.height= "50%";
+            img.style.top="30";
+            img.style.left="20";
+            img.style.position='absolute';
+            //添加img子节点
+        document.getElementById('Page2_caozuoquyu').appendChild(img);
+        }
+    });
+}
+
+<!--!&ndash;document.write("Hello World!");-->
+<!--document.write("可用宽度: " + screen.availWidth);-->
+<!--document.write("可用高度: " + screen.availHeight);-->
+
+function selectedFile(){
+    var oFile = event.target.files[0];
+
+    var fileReader = new FileReader();
+
+    fileReader.onload = function(){
+      var base64URL =  this.result ;
+      var blob = convertBase64UrlToBlob(base64URL,'image/jpeg');
+      uploadImage(blob);
+    }
+
+    fileReader.readAsDataURL(oFile)
+}
+function forAppCall(str) {
+ var btn = document.getElementById("btn1");
+ jin.setHorizontalScreen();
+     btn.innerText=str;
+     //var jintrn =
+            alert(getUserAgent());
+
+
+
+
+      //  alert(" 我是 H5 专门给 app写的方法。 ！ 你传入的值是： "+str);
+
+}
+function JinAndroidTest() {
+
+        jin.setPortraitScreen();
+      var btn = document.getElementById("btn1");
+      btn.innerText="修改了";
+
+}
+function getDeviceMsg() {
+
+}
+function showInP() {
+document.getElementById("demo").innerHTML =getUserAgentDealed();
+<!--document.getElementById("username").value = getUserAgentDealed();-->
+document.getElementById("jintextarea").value = getUserAgent();
+}
+
+
+function getUserAgent() {
+return navigator.userAgent;
+
+}
+function getUserAgentDealed() {
+var phonearr = navigator.userAgent.split(' ');
+  var phoneInformation;
+  for (var i = 0; i < phonearr.length; i++) {
+   if (phonearr[i].indexOf('/') >= 0) {
+    var phone = phonearr[i].split('/');
+    if (phone[0] == 'phoneInformation') {
+     phoneInformation = phone[1];
+     break;
+    };
+   }
+  }
+  return phoneInformation;
+}
+
+
+function getPhoneMsg() {
+
+var str = navigator.userAgent;
+var phonearr = navigator.userAgent.split(' ');
+
+   alert(" 我弹出来了： ");
+
+  var phoneInformation
+  for (var i = 0; i < phonearr.length; i++) {
+   if (phonearr[i].indexOf('/') >= 0) {
+    var phone = phonearr[i].split('/');
+    if (phone[0] == 'phoneInformation') {
+     phoneInformation = phone[1];
+     break;
+    };
+   }
+  }
+  return phoneInformation;
+}
+function openApp() {
+
+
+    const ua = window.navigator.userAgent.toLowerCase();
+   // 非微信浏览器
+      if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {
+			alert("我是apple！");
+        const loadDateTime = +new Date();
+        window.setTimeout(function() {
+          const timeOutDateTime = +new Date();
+          if ((timeOutDateTime - loadDateTime) < 5000) {
+            window.location.href = 'https://dx185.com/hr/login.html'; // ios下载地址
+          } else {
+            window.close();
+          }
+        }, 2000);
+        window.location.href = ' '; // ios对应的app协议
+      } else if (navigator.userAgent.match(/android/i)) {
+		//alert("我是android！");
+
+        const state = null;
+        try {
+
+ //setTimeout(function(){
+  //window.location.href = 'xl://goods:8888/goodsDetail?goodsId=10011002';
+    //  window.location.href = 'com.jinwode.jintest://';//唤起APP
+ // window.location.href = 'com.daxi.application://';
+
+   // },2000);
+ // window.location.href = 'com.jinwode.jintest://';
+ //window.location.href = 'com.daxi.application://';
+ window.location.href = 'com.xingin.xhs://';
+   // window.location.href = 'https://dx185.com/hr/login.html'; //2秒内没有唤起，表示手机中没有该APP，去下载页
+
+
+        } catch (e) {}
+
+      }
+    }
+document.write("总宽度/高度: ");
+document.write(window.screen.width + "*" + window.screen.height);
+document.write("<br>");
+document.write("可用宽度/高度: ");
+document.write(screen.availWidth + "*" + screen.availHeight);
+document.write("<br>");
+document.write("色彩深度: ");
+document.write(screen.colorDepth);
+document.write("<br>");
+document.write("色彩分辨率: ");
+document.write(screen.pixelDepth);
+document.write("像素比: ");
+document.write(window.devicePixelRatio);
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>

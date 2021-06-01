@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.jinwode.jintest">
+    <!-- 声明联网权限 -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 声明直接拨打电话权限 -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_CALL_LOG" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" /> <!-- 声明直接拨打电话权限 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- 声明SD卡读写权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 获取手机的唯一标识 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- 调用摄像头权限 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <application
+        android:name=".Main.MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="嵌套游览器"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="false"
+        android:theme="@style/Theme.JinTest"
+        tools:ignore="MissingClass">
+        <activity android:name=".utility.HttpActivity"></activity>
+        <activity android:name=".ActivityStore" />
+        <activity
+            android:name=".ActivityDialog"
+            android:launchMode="singleInstance"
+            android:theme="@style/Theme.AppCompat.DayNight.Dialog" />
+        <activity android:name=".CameraActivity" />
+        <activity
+            android:name=".activityFragmentTest"
+            android:label="@string/title_activity_main4">
+            <intent-filter>
+
+                <!-- 这个action 名字可以随便写的。 -->
+                <action android:name="com.jin.Action_Start" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="com.jin.My_CATEGORY" />
+            </intent-filter>
+        </activity> <!-- 在这里定义共享信息 -->
+        <provider
+            android:name=".Main.MyProvider"
+            android:authorities="com.jin.jintest.provider"
+            android:enabled="true"
+            android:exported="true"
+            android:grantUriPermissions="true">
+
+            <!-- grantUriPermissions: 是否允许授权文件的临时共享访问权限 -->
+            <!-- 定义Uri的共享路径 -->
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <service
+            android:name=".JinBroadCastService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".WebViewTest">
+            <intent-filter>
+
+                <!-- 这个action 名字可以随便写的。 -->
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="com.jin.My_CATEGORY" />
+
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="com.google.android.actions"
+            android:resource="@xml/actions" />
+
+        <activity android:name=".MainActivity2" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

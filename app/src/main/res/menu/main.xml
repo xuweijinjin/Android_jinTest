@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/item_add"
+        android:title="@string/nav_app_bar_open_drawer_description" />
+    <item
+        android:id="@+id/item_remove"
+        android:title="Remove" />
+    <item
+        android:id="@+id/item_modify"
+        android:title="修改" />
+</menu>
